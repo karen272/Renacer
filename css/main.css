@@ -2695,6 +2695,8 @@ html.no-csstransitions .hero-content {
 .connect-content {
   padding-bottom: 12rem;
   border-bottom: 1px solid rgba(82, 57, 31, 0.1);
+  display: flex;
+  justify-content: center;
 }
 
 .connect-content .column {
@@ -2704,6 +2706,20 @@ html.no-csstransitions .hero-content {
   -webkit-flex-flow: column nowrap;
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
+  margin: 0 auto;
+}
+
+.connect-content-centered {
+  text-align: center;
+  max-width: 100%;
+}
+
+.connect-content-centered .display-1 {
+  text-align: center;
+}
+
+.connect-content-centered p {
+  text-align: center;
 }
 
 .connect-content .column:first-child {
@@ -2842,9 +2858,11 @@ html.no-csstransitions .hero-content {
   background-color: #52391F;
   position: absolute;
   top: 0;
-  left: 50%;
+  left: 0;
   bottom: 0;
   right: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .series-img::before {
