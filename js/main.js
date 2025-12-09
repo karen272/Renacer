@@ -134,6 +134,86 @@
     };
 
 
+   /* History Carousel
+    * ------------------------------------------------------ */
+    const ssHistoryCarousel = function() {
+        
+        const $carousel = $('.history-carousel');
+        if ($carousel.length === 0) return;
+
+        const $slides = $carousel.find('.carousel-slide');
+        const $dots = $carousel.find('.carousel-dots .dot');
+        const $prevBtn = $carousel.find('.carousel-btn.prev');
+        const $nextBtn = $carousel.find('.carousel-btn.next');
+        
+        let currentSlide = 0;
+        const totalSlides = $slides.length;
+
+        // Función para mostrar un slide específico
+        function showSlide(index) {
+            // Asegurar que el índice esté dentro del rango
+            if (index >= totalSlides) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = index;
+            }
+
+            // Ocultar todos los slides
+            $slides.removeClass('active');
+            $dots.removeClass('active');
+
+            // Mostrar el slide actual
+            $slides.eq(currentSlide).addClass('active');
+            $dots.eq(currentSlide).addClass('active');
+        }
+
+        // Botón siguiente
+        $nextBtn.on('click', function(e) {
+            e.preventDefault();
+            showSlide(currentSlide + 1);
+        });
+
+        // Botón anterior
+        $prevBtn.on('click', function(e) {
+            e.preventDefault();
+            showSlide(currentSlide - 1);
+        });
+
+        // Dots navigation
+        $dots.on('click', function() {
+            const slideIndex = $(this).data('slide');
+            showSlide(slideIndex);
+        });
+
+        // Auto-play
+        let autoPlayInterval = setInterval(function() {
+            showSlide(currentSlide + 1);
+        }, 5000);
+
+        // Pausar auto-play al hacer hover
+        $carousel.on('mouseenter', function() {
+            clearInterval(autoPlayInterval);
+        });
+
+        // Reanudar auto-play al salir del hover
+        $carousel.on('mouseleave', function() {
+            autoPlayInterval = setInterval(function() {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        });
+
+        // Pausar auto-play al hacer clic en controles
+        $prevBtn.add($nextBtn).add($dots).on('click', function() {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(function() {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        });
+    };
+
+
    /* Initialize
     * ------------------------------------------------------ */
     (function ssInit() {
@@ -143,6 +223,7 @@
         ssAlertBoxes();
         ssSmoothScroll();
         ssBackToTop();
+        ssHistoryCarousel();
 
     })();
 
