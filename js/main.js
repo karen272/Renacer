@@ -214,6 +214,62 @@
     };
 
 
+   /* Instagram Reels Carousel
+    * ------------------------------------------------------ */
+    const ssInstagramReelsCarousel = function() {
+
+        const $carousel = $('.reels-carousel');
+        
+        if($carousel.length === 0) return;
+
+        const $wrapper = $('.reels-carousel__wrapper');
+        const $items = $('.reels-carousel__item');
+        const $prevBtn = $('.reels-carousel__nav--prev');
+        const $nextBtn = $('.reels-carousel__nav--next');
+        
+        let currentSlide = 0;
+        const totalSlides = $items.length;
+
+        const showSlide = function(n) {
+            if(n >= totalSlides) {
+                currentSlide = 0;
+            } else if(n < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = n;
+            }
+
+            const offset = -currentSlide * 100;
+            $wrapper.css('transform', 'translateX(' + offset + '%)');
+        };
+
+        $nextBtn.on('click', function() {
+            showSlide(currentSlide + 1);
+        });
+
+        $prevBtn.on('click', function() {
+            showSlide(currentSlide - 1);
+        });
+
+        // Auto-play del carrusel
+        let autoPlayInterval = setInterval(function() {
+            showSlide(currentSlide + 1);
+        }, 5000);
+
+        // Pausar auto-play al hacer hover
+        $carousel.on('mouseenter', function() {
+            clearInterval(autoPlayInterval);
+        });
+
+        // Reanudar auto-play al salir del hover
+        $carousel.on('mouseleave', function() {
+            autoPlayInterval = setInterval(function() {
+                showSlide(currentSlide + 1);
+            }, 5000);
+        });
+    };
+
+
    /* Initialize
     * ------------------------------------------------------ */
     (function ssInit() {
@@ -224,6 +280,7 @@
         ssSmoothScroll();
         ssBackToTop();
         ssHistoryCarousel();
+        ssInstagramReelsCarousel();
 
     })();
 
