@@ -267,6 +267,41 @@
                 showSlide(currentSlide + 1);
             }, 5000);
         });
+
+        // Ocultar el botón "Ver perfil" después de que se carguen los embeds
+        const hideProfileButton = function() {
+            // Ocultar el párrafo que contiene el enlace "Ver perfil"
+            $('.reels-carousel__item .instagram-media p').each(function() {
+                const $p = $(this);
+                const text = $p.text().toLowerCase();
+                if(text.includes('ver') || text.includes('perfil') || text.includes('instagram')) {
+                    $p.hide();
+                }
+            });
+            
+            // Ocultar enlaces que no sean el iframe
+            $('.reels-carousel__item .instagram-media a').not('iframe').each(function() {
+                const $a = $(this);
+                const href = $a.attr('href') || '';
+                if(href.includes('instagram.com') && !href.includes('embed')) {
+                    $a.hide();
+                }
+            });
+        };
+
+        // Ejecutar después de que se carguen los embeds
+        if (window.instgrm) {
+            window.instgrm.Embeds.process();
+            setTimeout(hideProfileButton, 1000);
+        } else {
+            // Si el script aún no está cargado, esperar a que se cargue
+            $(window).on('load', function() {
+                setTimeout(hideProfileButton, 2000);
+            });
+        }
+
+        // También intentar ocultar periódicamente por si el embed se carga más tarde
+        setInterval(hideProfileButton, 3000);
     };
 
 
