@@ -1796,7 +1796,7 @@ input::-moz-focus-inner {
 .calendar-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 0;
+  padding: 2rem 0 0 0;
 }
 
 .calendar-month {
@@ -1871,12 +1871,21 @@ input::-moz-focus-inner {
   height: 150px;
   overflow: hidden;
   background-color: #e0e0e0;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .event-card__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .event-card__content {
@@ -1940,7 +1949,7 @@ input::-moz-focus-inner {
 
 @media screen and (max-width:600px) {
   .calendar-container {
-    padding: 2rem 0;
+    padding: 2rem 0 0 0;
   }
 
   .calendar-days {
@@ -1960,12 +1969,64 @@ input::-moz-focus-inner {
     font-size: 2.8rem;
   }
 
+  .event-card__image {
+    height: 200px;
+    min-height: 200px;
+  }
+
+  .event-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
   .event-card__title {
     font-size: 1.8rem;
   }
 
   .event-card__details {
     font-size: 1.3rem;
+  }
+
+  /* Reducir espacio entre eventos y contacto en móviles */
+  .page-content {
+    padding-bottom: 2rem;
+  }
+
+  .s-social {
+    padding-top: 2rem;
+  }
+}
+
+/* Estilos específicos para iPhone */
+@media screen and (max-width:480px) {
+  .event-card__image {
+    height: 220px;
+    min-height: 220px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  .event-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* Estilos para iPhone en orientación landscape */
+@media screen and (max-width:900px) and (max-height:500px) {
+  .event-card__image {
+    height: 180px;
+    min-height: 180px;
   }
 }
 
@@ -3062,6 +3123,19 @@ html.no-csstransitions .hero-content {
     letter-spacing: 0.3rem;
   }
 
+  /* Reducir aún más el espacio en pantallas muy pequeñas */
+  .page-content {
+    padding-bottom: 1rem;
+  }
+
+  .s-social {
+    padding-top: 1rem;
+  }
+
+  .calendar-container {
+    padding-bottom: 0;
+  }
+
 }
 
 
@@ -4066,7 +4140,7 @@ html.no-csstransitions .hero-content {
  *
  * ------------------------------------------------------------------- */
 .s-social {
-  padding-top: 10.4rem;
+  padding-top: 4rem;
   padding-bottom: 9.6rem;
   background-color: #ffffff;
 }
@@ -4675,7 +4749,7 @@ html.no-csstransitions .hero-content {
  * ------------------------------------------------------------------- */
 .page-content {
   padding-top: 12rem;
-  padding-bottom: 16rem;
+  padding-bottom: 6rem;
   background-color: #ffffff;
 }
 
