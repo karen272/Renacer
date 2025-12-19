@@ -3596,6 +3596,70 @@ html.no-csstransitions .hero-content {
   margin-bottom: 2.4rem;
 }
 
+/* Events Cards Grid (for index.html) */
+.events-cards-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.events-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.4rem;
+}
+
+.event-card__description {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 1.2rem;
+}
+
+/* Responsive: Events Cards */
+@media screen and (max-width:900px) {
+  .events-cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .events-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .events-cards-container {
+    padding: 0 1rem;
+  }
+
+  .event-card__image {
+    height: 200px;
+    min-height: 200px;
+  }
+
+  .event-card__title {
+    font-size: 1.8rem;
+  }
+
+  .event-card__description {
+    font-size: 1.3rem;
+  }
+
+  .event-card__details {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width:400px) {
+  .event-card__image {
+    height: 180px;
+    min-height: 180px;
+  }
+}
+
 /* ===================================================================
  * # current series 
  *
