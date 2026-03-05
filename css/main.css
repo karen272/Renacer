@@ -4511,12 +4511,16 @@ html.no-csstransitions .hero-content {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .jovenes-feature {
   display: flex;
   align-items: center;
   gap: 1.6rem;
+  width: 100%;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -4541,6 +4545,15 @@ html.no-csstransitions .hero-content {
   justify-content: center;
   background: rgba(233, 209, 123, 0.5);
   border-radius: 12px;
+}
+
+.jovenes-feature__icon--empty {
+  background: transparent;
+}
+
+.jovenes-feature__icon--instagram svg {
+  width: 3.2rem;
+  height: 3.2rem;
 }
 
 .jovenes-feature__text h4 {
@@ -5257,7 +5270,7 @@ html.no-csstransitions .hero-content {
 
 .social-list__icon:hover {
   border-color: #9B6107;
-  background-color: rgba(155, 97, 7, 0.1);
+  background-color: #9B6107;
 }
 
 .social-list__icon {
@@ -5268,6 +5281,7 @@ html.no-csstransitions .hero-content {
   border: 1px solid #52391F;
   margin-right: 2rem;
   position: relative;
+  background-color: #52391F;
 }
 
 .social-list__icon::before {
@@ -5463,6 +5477,62 @@ html.no-csstransitions .hero-content {
   display: block;
 }
 
+/* footer location */
+.footer-location__title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin: 0 0 1.6rem 0;
+}
+
+.footer-location__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+  flex-shrink: 0;
+}
+
+.footer-location__icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.footer-location__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-location__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+
+.footer-location__item:last-child {
+  margin-bottom: 0;
+}
+
+.footer-location__item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.footer-location__item-icon svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
 /* -------------------------------------------------------------------
  * ## footer list 
  * ------------------------------------------------------------------- */
@@ -5637,6 +5707,21 @@ html.no-csstransitions .hero-content {
     font-size: 1.8rem;
     line-height: 1.4;
     text-align: center;
+  }
+
+  .footer-location__title {
+    justify-content: center;
+  }
+
+  .footer-location__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-location__item {
+    justify-content: center;
   }
 
   .s-footer p {
