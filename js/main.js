@@ -305,6 +305,47 @@
     };
 
 
+   /* Scroll Reveal - animaciones al hacer scroll
+    * ------------------------------------------------------ */
+    const ssScrollReveal = function() {
+
+        const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-up, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+
+        if (revealElements.length === 0) return;
+
+        const revealOnScroll = function() {
+            const supportsIntersectionObserver = 'IntersectionObserver' in window;
+
+            if (supportsIntersectionObserver) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px 0px -120px 0px',
+                    threshold: 0.2
+                };
+
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('scroll-reveal--visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                revealElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                revealElements.forEach(function(el) {
+                    el.classList.add('scroll-reveal--visible');
+                });
+            }
+        };
+
+        $WIN.on('load', revealOnScroll);
+    };
+
+
    /* Initialize
     * ------------------------------------------------------ */
     (function ssInit() {
@@ -314,6 +355,7 @@
         ssAlertBoxes();
         ssSmoothScroll();
         ssBackToTop();
+        ssScrollReveal();
         ssHistoryCarousel();
         ssInstagramReelsCarousel();
 

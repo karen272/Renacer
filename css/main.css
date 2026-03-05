@@ -3797,6 +3797,13 @@ html.no-csstransitions .hero-content {
   .radio-container {
     padding: 2.4rem 1.6rem;
     border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+
+  .connect-content {
+    padding: 0 1rem;
   }
 
   .radio-icon {
@@ -4012,6 +4019,11 @@ html.no-csstransitions .hero-content {
   .events-cards-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
+    justify-items: center;
+  }
+
+  .events-header {
+    text-align: center;
   }
 }
 
@@ -4019,10 +4031,23 @@ html.no-csstransitions .hero-content {
   .events-cards-grid {
     grid-template-columns: 1fr;
     gap: 1.6rem;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   .events-cards-container {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .events-header {
+    text-align: center;
+  }
+
+  .event-card {
+    width: 100%;
+    max-width: 100%;
   }
 
   .event-card__image {
@@ -4032,14 +4057,22 @@ html.no-csstransitions .hero-content {
 
   .event-card__title {
     font-size: 1.8rem;
+    text-align: center;
   }
 
   .event-card__description {
     font-size: 1.3rem;
+    text-align: center;
   }
 
   .event-card__details {
     font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .s-events .btn--primary {
+    display: block;
+    margin: 0 auto;
   }
 }
 
@@ -4481,7 +4514,6 @@ html.no-csstransitions .hero-content {
 }
 
 .jovenes-main {
-  animation: fadeInLeft 0.8s ease-out 0.4s both;
 }
 
 .jovenes-description {
@@ -4572,7 +4604,6 @@ html.no-csstransitions .hero-content {
 }
 
 .jovenes-actions {
-  animation: fadeInRight 0.8s ease-out 0.4s both;
 }
 
 .jovenes-btn {
@@ -4715,6 +4746,85 @@ html.no-csstransitions .hero-content {
   }
   50% {
     transform: scale(1.1);
+  }
+}
+
+/* Scroll Reveal - animaciones al hacer scroll */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-up {
+  opacity: 0;
+  transform: translateY(70px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-up.scroll-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-left.scroll-reveal--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-right.scroll-reveal--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal-scale.scroll-reveal--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delays para elementos en secuencia */
+.scroll-reveal-delay-1 { transition-delay: 0.1s; }
+.scroll-reveal-delay-2 { transition-delay: 0.2s; }
+.scroll-reveal-delay-3 { transition-delay: 0.3s; }
+.scroll-reveal-delay-4 { transition-delay: 0.4s; }
+.scroll-reveal-delay-5 { transition-delay: 0.5s; }
+
+/* Scroll reveal en mobile - ajuste para pantallas pequeñas */
+@media screen and (max-width:600px) {
+  .scroll-reveal {
+    transform: translateY(40px);
+  }
+  .scroll-reveal-up {
+    transform: translateY(50px);
+  }
+  .scroll-reveal-left {
+    transform: translateX(-40px);
+  }
+  .scroll-reveal-right {
+    transform: translateX(40px);
   }
 }
 
@@ -4862,6 +4972,8 @@ html.no-csstransitions .hero-content {
   .jovenes-actions {
     width: 100%;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .jovenes-btn {
@@ -5131,6 +5243,8 @@ html.no-csstransitions .hero-content {
 @media screen and (max-width:600px) {
   .reels-carousel__item .instagram-media {
     max-width: 300px !important;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .reels-carousel__item iframe {
@@ -5141,6 +5255,12 @@ html.no-csstransitions .hero-content {
   .s-instagram-reels {
     padding-top: 6rem;
     padding-bottom: 6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .reels-header {
+    padding: 0 1rem;
   }
 
   .reels-header h2 {
@@ -5154,6 +5274,10 @@ html.no-csstransitions .hero-content {
 
   .reels-carousel {
     margin-bottom: 4rem;
+  }
+
+  .reels-cta {
+    padding: 0 1rem;
   }
 
   .reels-carousel__nav {
@@ -5188,6 +5312,9 @@ html.no-csstransitions .hero-content {
 
 .social-content {
   max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
 }
 
 .contact-title {
@@ -5369,10 +5496,20 @@ html.no-csstransitions .hero-content {
   }
 }
 
+@media screen and (max-width:600px) {
+  .social-content {
+    padding: 0 1.5rem;
+  }
+}
+
 @media screen and (max-width:400px) {
   .s-social {
     padding-top: 8rem;
     padding-bottom: 7rem;
+  }
+
+  .social-content {
+    padding: 0 1rem;
   }
 
   .contact-title {
