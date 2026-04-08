@@ -131,6 +131,12 @@
                 $goTopButton.removeClass('link-is-visible')
             }
         });
+
+        // Sincroniza tras layout (p. ej. Safari) y si la página carga ya desplazada
+        $(window).trigger('scroll');
+        $WIN.on('load', function() {
+            $(window).trigger('scroll');
+        });
     };
 
 
